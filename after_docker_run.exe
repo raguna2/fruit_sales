@@ -7,7 +7,7 @@ echo "デフォルトであるpostgresというユーザのパスワードを設
 passwd postgres
 echo "postgresユーザでログイン"
 echo "これからユーザの作成/権限追加/データベース作成を行います。"
-echo "psql -f /var/www/app/fruit_sales/init.sqlと入力してenterを押して下さい。"
+echo "psql -f /var/www/app/fruit_sales/fruit_sales/init.sqlと入力してenterを押して下さい。"
 echo "入力待ちになったらexitと入力してください。" && su - postgres
 echo "完了しました。データベースのマイグレーションを行います。"
 python manage.py makemigrations accounts
@@ -19,6 +19,6 @@ echo "手順に従ってユーザ名、メールアドレス、パスワード�
 python manage.py createsuperuser
 echo "スーパーユーザーが作成されました。"
 echo "先程指定したユーザ名とパスワードでlocalhost:8000/adminにログインできます。"
-echo '書いたコードを試すときは、/var/www/app/fruit_sales/ で「djangos」とコマンドを打つとブラウザでlocalhost:8000にアクセスできます'
+echo '書いたコードを試すときは、/var/www/app/fruit_sales/fruit_sales/ 配下で「djangos」とコマンドを打つとブラウザでlocalhost:8000にアクセスできます'
 echo 'commented by kutsumi'
 
