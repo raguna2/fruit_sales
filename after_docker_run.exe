@@ -19,6 +19,6 @@ echo "手順に従ってユーザ名、メールアドレス、パスワード�
 python manage.py createsuperuser
 echo "スーパーユーザーが作成されました。"
 echo "先程指定したユーザ名とパスワードでlocalhost:8000/adminにログインできます。"
-echo '書いたコードを試すときは、/var/www/app/fruit_sales/ (現在いる位置)で「djangos」とコマンドを打つとブラウザでlocalhost:8000にアクセスできます'
+echo '書いたコードを試すときは、/var/www/app/fruit_sales/ で「djangos」とコマンドを打つとブラウザでlocalhost:8000にアクセスできます'
 echo 'commented by kutsumi'
 
