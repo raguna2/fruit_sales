@@ -9,13 +9,11 @@ echo "postgresユーザでログイン"
 echo "これからユーザの作成/権限追加/データベース作成を行います。"
 echo "psql -f /var/www/app/fruit_sales/init.sqlと入力してenterを押して下さい。"
 echo "入力待ちになったらexitと入力してください。" && su - postgres
-# echo "完了しました。データベースのマイグレーションを行います。"
-# python manage.py makemigrations accounts
-# python manage.py makemigrations portraits
-# python manage.py makemigrations follow
-# python manage.py makemigrations search
-# python manage.py migrate
-# echo "データベースのマイグレーションが完了しました。"
+echo "完了しました。データベースのマイグレーションを行います。"
+python manage.py makemigrations accounts
+python manage.py makemigrations sales
+python manage.py migrate
+echo "データベースのマイグレーションが完了しました。"
 echo "これからadminサイトのスーパーユーザーを作成します。"
 echo "手順に従ってユーザ名、メールアドレス、パスワードを設定して下さい。"
 python manage.py createsuperuser
