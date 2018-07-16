@@ -1,0 +1,59 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>
+      {% block title %}{% endblock %}
+    </title>
+    <link rel="stylesheet" href="{% static 'accounts/css/container.css' %}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/solid.css" integrity="sha384-TbilV5Lbhlwdyc4RuIV/JhD8NR+BfMrvz4BL5QFa2we1hQu6wvREr3v6XSRfCTRp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/regular.css" integrity="sha384-avJt9MoJH2rB4PKRsJRHZv7yiFZn8LrnXuzvmZoD3fh1aL6aM6s0BBcnCvBe6XSD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/brands.css" integrity="sha384-7xAnn7Zm3QC1jFjVc1A6v/toepoG3JXboQYzbM0jrPzou9OFXm/fY6Z/XiIebl/k" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/fontawesome.css" integrity="sha384-ozJwkrqb90Oa3ZNb+yKFW2lToAWYdTiF1vt8JiH5ptTGHTGcN7qdoR1F95e0kYyG" crossorigin="anonymous">
+  </head>
+  <body onLoad="document.body.style.visibility='visible'" style="background-color: #f8fff5;">
+    {% include 'header.html' %}
+    <section class="section" style="padding: 2% 9%; margin-bottom: 100px;">
+      <div class="container">
+        {% if not request.path == '/top/' %}
+        {% if request.user.is_authenticated %}
+        <h1 class="title">{{ base_title }}</h1>
+        <nav class="breadcrumb has-succeeds-separator" aria-label="breadcrumbs">
+          <ul>
+            <li><a href="/top/">TOP</a></li>
+            {% if base_title and method_title %}
+            <li><a href={{ base_url }}>{{ base_title }}</a></li>
+            {% else %}
+            <li>{{ base_title }}</li>
+            {% endif %}
+            {% if method_title %}
+            <li>{{ method_title }}</li>
+            {% endif %}
+          </ul>
+        </nav>
+        {% endif %}
+        {% endif %}
+        {% block content %}
+        {{ content }}
+        {% endblock %}
+      </div>
+    </section>
+    {% if messages %}
+    {% for message in messages %}
+    <p>{{ message.tags }}</p>
+    <article {% if message.tags == 'error' %} class="message is-danger" {% else %} class="message is-success"{% endif %}>
+      <div class="message-header">
+        <p>{{ message }}</p>
+      </div>
+      {% if form.errors %}
+      <div class="message-body" style="border: #d0cccc 1px solid;">
+        {% for field in form %}
+        {{ field.errors }}
+        {% endfor %}
+      </div>
+      {% endif %}
+    </article>
+    {% endfor %}
+    {% endif %}
+  </body>

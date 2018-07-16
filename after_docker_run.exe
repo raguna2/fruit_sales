@@ -1,0 +1,26 @@
+#!/bin/bash
+set -Ceu
+
+echo "postgresを起動"
+service postgresql start
+echo "デフォルトであるpostgresというユーザのパスワードを設定(任意のパスワードを入れて下さい。)"
+passwd postgres
+echo "postgresユーザでログイン"
+echo "これからユーザの作成/権限追加/データベース作成を行います。"
+echo "psql -f /var/www/app/fruit_sales/init.sqlと入力してenterを押して下さい。"
+echo "入力待ちになったらexitと入力してください。" && su - postgres
+# echo "完了しました。データベースのマイグレーションを行います。"
+# python manage.py makemigrations accounts
+# python manage.py makemigrations portraits
+# python manage.py makemigrations follow
+# python manage.py makemigrations search
+# python manage.py migrate
+# echo "データベースのマイグレーションが完了しました。"
+echo "これからadminサイトのスーパーユーザーを作成します。"
+echo "手順に従ってユーザ名、メールアドレス、パスワードを設定して下さい。"
+python manage.py createsuperuser
+echo "スーパーユーザーが作成されました。"
+echo "先程指定したユーザ名とパスワードでlocalhost:8000/adminにログインできます。"
+echo '書いたコードを試すときは、/var/www/app/montage/ (現在いる位置)で「djangos」とコマンドを打つとブラウザでlocalhost:8000にアクセスできます'
+echo 'commented by kutsumi'
+

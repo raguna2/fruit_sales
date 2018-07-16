@@ -1,0 +1,18 @@
+<section class="hero is-primary is-large">
+  <div class="hero-head">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <a href="/" class="navbar-item"><h2 class="subtitle has-text-weight-bold">くだもの販売管理</h2></a>
+        </div>
+        <div id="navbarMenuHeroB" class="navbar-menu">
+          {% if request.user.is_authenticated %}
+          <div class="navbar-end">
+            <a href="{% url "accounts:logout"%}" class="navbar-item is-active has-text-weight-bold">ログアウト</a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>

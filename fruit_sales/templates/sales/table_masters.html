@@ -1,0 +1,8 @@
+{% load humanize %}
+<td>{{ list.id }}</td>
+<td>{{ list.name }}</td>
+<td>¥{{ list.price|intcomma:False }} /個</td>
+<td>{{ list.regist_date }}</td>
+<td><a href="{% url "sales:edit_fruit" list.id %}">編集</a></td>
+<td><a href="{% url "sales:fruit_delete_confirm" list.id %}">削除</a></td>
+

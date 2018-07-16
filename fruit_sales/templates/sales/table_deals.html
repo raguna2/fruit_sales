@@ -1,0 +1,7 @@
+{% load humanize %}
+<td>{{ list.price_record.record_title }}</td>
+<td>{{ list.quantity|intcomma:False }} 個</td>
+<td>¥{{ list.deal_sum|intcomma:False }}</td>
+<td>{{ list.deal_date }}</td>
+<td><a href="{% url "sales:edit_deal" list.id %}">編集</a></td>
+<td><a href="{% url "sales:deal_delete_confirm" list.id %}">削除</a></td>

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <div class="tile is-parent">
+    <article class="tile is-child notification is-primary">
+      <div class="content">
+        {% if update_form.errors %}
+        <div class="errors-list">
+          <div class='error-mention'>
+            ユーザ名またはパスワードが正しくありません。もう一度確認してログインして下さい。
+          </div>
+        </div>
+        {% endif %}
+        <h1 class="title has-text-centered">果物マスター編集</h1>
+        <form class="method-form" method ="POST">
+          {% csrf_token %}
+          <div class="field">
+            <div class="control">
+              {{ form.name.label }}
+              {{ form.name }}
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+              {{ form.price.label }}
+              <span style="position: relative; top: 45px; right: 65px; font-size: 30px;">¥</span>
+              {{ form.price }}
+            </div>
+          </div>
+          <div class="control">
+            <button type="submit" class="button is-danger is-pulled-right">更新</button>
+          </div>
+        </form>
+      </div>
+    </article>
+  </div>
+</div>
+{% endblock content %}

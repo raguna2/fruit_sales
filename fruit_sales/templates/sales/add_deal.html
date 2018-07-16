@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <div class="tile is-parent">
+    <article class="tile is-child notification is-primary">
+      <div class="content">
+        <h1 class="title has-text-centered">{% block title %}販売情報登録{% endblock title%}</h1>
+        <form method ="POST" class="method-form" action="{% url 'sales:add_deal' %}">
+          {% csrf_token %}
+          <div class="field">
+            <p>販売した果物</p>
+            <div class="control has-icons-left">
+              <div class="select is-rounded is-large">
+                <select name='choice_fruit'>
+                  {% for fruit in choice_fruit %}
+                  <option value="{{ fruit.pk }}">{{ fruit.name }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <span class="icon is-medium is-left">
+                <i class="fas fa-shopping-basket"></i>
+              </span>
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+              <p>{{ form.quantity.label }}</p>
+              {{ form.quantity }}
+              <span style="position: relative; bottom: 45px; left: 105%; font-size: 30px;">個</span>
+            </div>
+          </div>
+          {% include 'sales/date_time.html' %}
+          <div class="control">
+            <button type="submit" class="button is-danger is-pulled-right">登録</button>
+          </div>
+        </form>
+      </div>
+    </article>
+  </div>
+</div>
+{% endblock content %}

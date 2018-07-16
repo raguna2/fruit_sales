@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load humanize%}
+{% block content %}
+<h3 class="subtitle">累計</h3>
+<h4 class="subtitle" style="margin-bottom: 25px;">{{ total|intcomma:False }} 円</h4>
+<h3 class="subtitle">月別</h3>
+<table class="table is-narrowed pricing__table is-fullwidth">
+  <tbody>
+    <tr>
+      <td>月</td>
+      <td>売上</td>
+      <td>内訳</td>
+    </tr>
+    {% for detail in monthly_details %}
+    <tr>
+      <td>{{ detail.month }}</td>
+      <td>{{ detail.sales|intcomma:False }} 円</td>
+      <td>{{ detail.breakdown }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<h3 class="subtitle">日別</h3>
+<table class="table is-narrowed pricing__table is-fullwidth">
+  <tbody>
+    <tr>
+      <td>日</td>
+      <td>売上</td>
+      <td>内訳</td>
+    </tr>
+    {% for detail in daily_details %}
+    <tr>
+      <td>{{ detail.day }}</td>
+      <td>{{ detail.sales|intcomma:False }} 円</td>
+      <td>{{ detail.breakdown }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}

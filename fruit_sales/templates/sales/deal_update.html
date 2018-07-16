@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <div class="tile is-parent">
+    <article class="tile is-child notification is-primary">
+      <div class="content">
+        <h1 class="title has-text-centered">{% block title %}販売情報編集{% endblock title %}</h1>
+        <form class="method-form" method ="POST">
+          {% csrf_token %}
+          <div class="field">
+            <div class="control">
+              {{ form.quantity.label }}
+              {{ form.quantity }}
+            </div>
+          </div>
+          {% include 'sales/date_time.html' %}
+          <div class="control">
+            <button type="submit" class="button is-danger is-pulled-right">更新</button>
+          </div>
+        </form>
+      </div>
+    </article>
+  </div>
+</div>
+{% endblock content %}

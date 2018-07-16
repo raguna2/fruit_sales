@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <div class="wrap">
+    <div class="wrapper">
+      {% if form.errors %}
+      <div class="errors-list">
+        <div class='error-mention'>
+          ユーザ名またはパスワードが正しくありません。もう一度確認してログインして下さい。
+        </div>
+      </div>
+      {% endif %}
+      <h2 class="subtitle has-text-centered">ログイン</h1>
+      {# action="{% url 'accounts:login' %}" #}
+      <form class="my-form" method ="POST" action="{% url 'accounts:login' %}">
+        {% csrf_token %}
+        {% for field in login_form %}
+        <div class="field">
+          <label class="label">{{ field.label }}</label>
+          <div class="control">
+            {{ field }}
+          </div>
+        </div>
+        {% endfor %}
+        <div class="control">
+          <button type="submit" class="button is-danger" style="width: 100%;">ログイン</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock content %}

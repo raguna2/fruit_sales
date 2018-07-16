@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="title has-text-centered">管理TOP</h1>
+<div class="tile is-ancestor">
+  <div class="tile is-4 is-vertical is-parent">
+    <div class="tile is-child box">
+      <h2 class="title has-text-centered"><a href="{% url "sales:masters"%}">マスター登録</a></h2>
+      <p style="color: #69707a">果物の名前、単価を登録することができます。</p>
+    </div>
+    <div class="tile is-child box">
+      <h2 class="title has-text-centered"><a href="{% url "sales:deals"%}">販売登録</a></h2>
+      <p style="color: #69707a">果物の販売情報を登録することができます。</p>
+    </div>
+  </div>
+  <div class="tile is-parent">
+    <div class="tile is-child box">
+      <p class="title has-text-centered"><a href="{% url "sales:analytics"%}">統計情報</a></p>
+      <div class="is-danger" style="color: #69707a">
+        <p>販売情報を集計し、閲覧できます。</p>
+        <p>累計の売上高が閲覧できます。</p>
+        <p>閲覧可能なのは、直近三ヶ月分の月別売上集計と、直近3日の日別売上情報です。</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

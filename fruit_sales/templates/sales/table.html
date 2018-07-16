@@ -1,0 +1,19 @@
+<table class="table is-narrowed pricing__table is-fullwidth">
+  <tbody>
+    <tr>
+      {% for item in table_header %}
+      <td>{{ item }}</td>
+      {% endfor %}
+    </tr>
+    {% for list in lists %}
+    <tr>
+      {% if request.path == '/top/masters' %}
+      {% include 'sales/table_masters.html' %}
+      {% else %}
+      {% include 'sales/table_deals.html' %}
+      {% endif %}
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+

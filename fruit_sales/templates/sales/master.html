@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block content %}
+{% include 'sales/table.html' %}
+<a href="{% url "sales:add_fruit" %}" class="button is-outlined is-pulled-right">新規追加</a>
+{% endblock content %}

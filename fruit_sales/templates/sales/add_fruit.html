@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <div class="tile is-parent">
+    <article class="tile is-child notification is-primary">
+      <div class="content">
+        <h1 class="title has-text-centered">果物登録</h1>
+        <form method ="POST" class="method-form" action="{% url 'sales:add_fruit' %}">
+          {% csrf_token %}
+          <div class="field">
+            <div class="control">
+              {{ form.name.label }}
+              {{ form.name }}
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+              {{ form.price.label }}
+              <span style="position: relative; top: 45px; right: 65px; font-size: 30px;">¥</span>
+              {{ form.price }}
+            </div>
+          </div>
+          <div class="control">
+            <button type="submit" class="button is-danger is-pulled-right">登録</button>
+          </div>
+        </form>
+      </div>
+    </article>
+  </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,10 @@
+django.log
+/accounts/migrations/*
+__pycache__
+*.pyc
+*.pyo
+.DS_Store
+init.sql
+after_docker_run.exec
+/accounts/migrations/*
+/sales/migrations/*

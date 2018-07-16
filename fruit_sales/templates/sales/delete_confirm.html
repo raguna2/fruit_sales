@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <div class="tile is-parent">
+    <article class="tile is-child notification is-primary">
+      <div class="content content-delete">
+        <h1 class="title has-text-centered">{% block title %}削除確認{% endblock title %}</h1>
+        {% if object.name %}
+        <p>{{ object.name }} を果物マスターから削除してよろしいですか?</p>
+        {% else %}
+        <h4 class="title">下記情報を販売情報から削除します。よろしいですか?</h2>
+        <p>名称：{{ object.price_record.record_title }}</p>
+        <p>個数：{{ object.quantity }}個</p>
+        <p>小計：{{ object.deal_sum }}円</p>
+        <p>売上日：{{ object.deal_date }}</p>
+        {% endif %}
+        <form method="post">
+          {% csrf_token %}
+          {% if object.name %}
+          <a href="{% url "sales:masters" %}" class="button is-light is-pulled-right">キャンセル</a>
+          {% else %}
+          <a href="{% url "sales:deals" %}" class="button is-light is-pulled-right">キャンセル</a>
+          {% endif %}
+          <button type="submit" class="button is-danger is-pulled-right" style="margin-right: 10px;">削除</button>
+        </form>
+      </div>
+    </article>
+  </div>
+</div>
+{% endblock content %}
